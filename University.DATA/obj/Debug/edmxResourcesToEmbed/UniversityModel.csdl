@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversityDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BranchId" />
+    </Key>
+    <Property Name="BranchId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FacultyId" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Faculty" Relationship="Self.FK_Branches_Faculties" FromRole="Branches" ToRole="Faculties" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_Branches" FromRole="Branches" ToRole="Courses" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Students_Branches" FromRole="Branches" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BranchId" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Branch" Relationship="Self.FK_Courses_Branches" FromRole="Courses" ToRole="Branches" />
+    <NavigationProperty Name="InstructorCourses" Relationship="Self.FK_InstructorCourses_Courses" FromRole="Courses" ToRole="InstructorCourses" />
+    <NavigationProperty Name="StudentCourses" Relationship="Self.FK_StudentCourses_Courses" FromRole="Courses" ToRole="StudentCourses" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="FacultyId" />
+    </Key>
+    <Property Name="FacultyId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FacultyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Branches" Relationship="Self.FK_Branches_Faculties" FromRole="Faculties" ToRole="Branches" />
+  </EntityType>
+  <EntityType Name="InstructorCours">
+    <Key>
+      <PropertyRef Name="InstructorCourseId" />
+    </Key>
+    <Property Name="InstructorCourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstructorId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cours" Relationship="Self.FK_InstructorCourses_Courses" FromRole="InstructorCourses" ToRole="Courses" />
+    <NavigationProperty Name="Instructor" Relationship="Self.FK_InstructorCourses_Instructors" FromRole="InstructorCourses" ToRole="Instructors" />
+  </EntityType>
+  <EntityType Name="Instructor">
+    <Key>
+      <PropertyRef Name="InstructorId" />
+    </Key>
+    <Property Name="InstructorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobilePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RecordStatusId" Type="Byte" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <NavigationProperty Name="InstructorCourses" Relationship="Self.FK_InstructorCourses_Instructors" FromRole="Instructors" ToRole="InstructorCourses" />
+    <NavigationProperty Name="RecordStatus" Relationship="Self.FK_Instructors_RecordStatuses" FromRole="Instructors" ToRole="RecordStatuses" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Instructors_Users" FromRole="Instructors" ToRole="Users" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_Instructors_Users1" FromRole="Instructors" ToRole="Users" />
+    <NavigationProperty Name="User2" Relationship="Self.FK_Instructors_Users2" FromRole="Instructors" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="RecordStatus">
+    <Key>
+      <PropertyRef Name="RecordStatusId" />
+    </Key>
+    <Property Name="RecordStatusId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RecordStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Instructors" Relationship="Self.FK_Instructors_RecordStatuses" FromRole="RecordStatuses" ToRole="Instructors" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Students_RecordStatuses" FromRole="RecordStatuses" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="StudentCours">
+    <Key>
+      <PropertyRef Name="StudentCourseId" />
+    </Key>
+    <Property Name="StudentCourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cours" Relationship="Self.FK_StudentCourses_Courses" FromRole="StudentCourses" ToRole="Courses" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_StudentCourses_Students" FromRole="StudentCourses" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TcNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobilePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BranchId" Type="Int16" Nullable="false" />
+    <Property Name="RecordStatusId" Type="Byte" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <NavigationProperty Name="Branch" Relationship="Self.FK_Students_Branches" FromRole="Students" ToRole="Branches" />
+    <NavigationProperty Name="RecordStatus" Relationship="Self.FK_Students_RecordStatuses" FromRole="Students" ToRole="RecordStatuses" />
+    <NavigationProperty Name="StudentCourses" Relationship="Self.FK_StudentCourses_Students" FromRole="Students" ToRole="StudentCourses" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Students_Users" FromRole="Students" ToRole="Users" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_Students_Users1" FromRole="Students" ToRole="Users" />
+    <NavigationProperty Name="User2" Relationship="Self.FK_Students_Users2" FromRole="Students" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RecordStatusId" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Instructors" Relationship="Self.FK_Instructors_Users" FromRole="Users" ToRole="Instructors" />
+    <NavigationProperty Name="Instructors1" Relationship="Self.FK_Instructors_Users1" FromRole="Users" ToRole="Instructors" />
+    <NavigationProperty Name="Instructors2" Relationship="Self.FK_Instructors_Users2" FromRole="Users" ToRole="Instructors" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Students_Users" FromRole="Users" ToRole="Students" />
+    <NavigationProperty Name="Students1" Relationship="Self.FK_Students_Users1" FromRole="Users" ToRole="Students" />
+    <NavigationProperty Name="Students2" Relationship="Self.FK_Students_Users2" FromRole="Users" ToRole="Students" />
+  </EntityType>
+  <Association Name="FK_Branches_Faculties">
+    <End Role="Faculties" Type="Self.Faculty" Multiplicity="1" />
+    <End Role="Branches" Type="Self.Branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculties">
+        <PropertyRef Name="FacultyId" />
+      </Principal>
+      <Dependent Role="Branches">
+        <PropertyRef Name="FacultyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_Branches">
+    <End Role="Branches" Type="Self.Branch" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Branches">
+    <End Role="Branches" Type="Self.Branch" Multiplicity="1" />
+    <End Role="Students" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstructorCourses_Courses">
+    <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+    <End Role="InstructorCourses" Type="Self.InstructorCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="InstructorCourses">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourses_Courses">
+    <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+    <End Role="StudentCourses" Type="Self.StudentCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="StudentCourses">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstructorCourses_Instructors">
+    <End Role="Instructors" Type="Self.Instructor" Multiplicity="1" />
+    <End Role="InstructorCourses" Type="Self.InstructorCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instructors">
+        <PropertyRef Name="InstructorId" />
+      </Principal>
+      <Dependent Role="InstructorCourses">
+        <PropertyRef Name="InstructorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Instructors_RecordStatuses">
+    <End Role="RecordStatuses" Type="Self.RecordStatus" Multiplicity="1" />
+    <End Role="Instructors" Type="Self.Instructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RecordStatuses">
+        <PropertyRef Name="RecordStatusId" />
+      </Principal>
+      <Dependent Role="Instructors">
+        <PropertyRef Name="RecordStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Instructors_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Instructors" Type="Self.Instructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Instructors">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Instructors_Users1">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Instructors" Type="Self.Instructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Instructors">
+        <PropertyRef Name="ModifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Instructors_Users2">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Instructors" Type="Self.Instructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Instructors">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_RecordStatuses">
+    <End Role="RecordStatuses" Type="Self.RecordStatus" Multiplicity="1" />
+    <End Role="Students" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RecordStatuses">
+        <PropertyRef Name="RecordStatusId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="RecordStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourses_Students">
+    <End Role="Students" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentCourses" Type="Self.StudentCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentCourses">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Students" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Users1">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Students" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="ModifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Users2">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Students" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UniversityDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Branches" EntityType="Self.Branch" />
+    <EntitySet Name="Courses" EntityType="Self.Cours" />
+    <EntitySet Name="Faculties" EntityType="Self.Faculty" />
+    <EntitySet Name="InstructorCourses" EntityType="Self.InstructorCours" />
+    <EntitySet Name="Instructors" EntityType="Self.Instructor" />
+    <EntitySet Name="RecordStatuses" EntityType="Self.RecordStatus" />
+    <EntitySet Name="StudentCourses" EntityType="Self.StudentCours" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Branches_Faculties" Association="Self.FK_Branches_Faculties">
+      <End Role="Faculties" EntitySet="Faculties" />
+      <End Role="Branches" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_Branches" Association="Self.FK_Courses_Branches">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Branches" Association="Self.FK_Students_Branches">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstructorCourses_Courses" Association="Self.FK_InstructorCourses_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="InstructorCourses" EntitySet="InstructorCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourses_Courses" Association="Self.FK_StudentCourses_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="StudentCourses" EntitySet="StudentCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstructorCourses_Instructors" Association="Self.FK_InstructorCourses_Instructors">
+      <End Role="Instructors" EntitySet="Instructors" />
+      <End Role="InstructorCourses" EntitySet="InstructorCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Instructors_RecordStatuses" Association="Self.FK_Instructors_RecordStatuses">
+      <End Role="RecordStatuses" EntitySet="RecordStatuses" />
+      <End Role="Instructors" EntitySet="Instructors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Instructors_Users" Association="Self.FK_Instructors_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Instructors" EntitySet="Instructors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Instructors_Users1" Association="Self.FK_Instructors_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Instructors" EntitySet="Instructors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Instructors_Users2" Association="Self.FK_Instructors_Users2">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Instructors" EntitySet="Instructors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_RecordStatuses" Association="Self.FK_Students_RecordStatuses">
+      <End Role="RecordStatuses" EntitySet="RecordStatuses" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourses_Students" Association="Self.FK_StudentCourses_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="StudentCourses" EntitySet="StudentCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Users" Association="Self.FK_Students_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Users1" Association="Self.FK_Students_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Users2" Association="Self.FK_Students_Users2">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

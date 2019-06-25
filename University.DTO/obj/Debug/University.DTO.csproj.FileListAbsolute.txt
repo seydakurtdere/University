@@ -1,0 +1,6 @@
+C:\Users\iau\source\repos\University\University.DTO\bin\Debug\University.DTO.dll
+C:\Users\iau\source\repos\University\University.DTO\bin\Debug\University.DTO.pdb
+C:\Users\iau\source\repos\University\University.DTO\obj\Debug\University.DTO.csproj.CoreCompileInputs.cache
+C:\Users\iau\source\repos\University\University.DTO\obj\Debug\University.DTO.dll
+C:\Users\iau\source\repos\University\University.DTO\obj\Debug\University.DTO.pdb
+C:\Users\iau\source\repos\University\University.DTO\obj\Debug\University.DTO.csprojAssemblyReference.cache

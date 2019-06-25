@@ -1,0 +1,17 @@
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\University.Service.dll
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\University.Service.pdb
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\AutoMapper.dll
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\University.DATA.dll
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\University.DTO.dll
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\EntityFramework.dll
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\University.DATA.pdb
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\University.DATA.dll.config
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\University.DTO.pdb
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\AutoMapper.pdb
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\AutoMapper.xml
+C:\Users\iau\source\repos\University\University.Service\bin\Debug\EntityFramework.xml
+C:\Users\iau\source\repos\University\University.Service\obj\Debug\University.Service.csprojAssemblyReference.cache
+C:\Users\iau\source\repos\University\University.Service\obj\Debug\University.Service.csproj.CoreCompileInputs.cache
+C:\Users\iau\source\repos\University\University.Service\obj\Debug\University.Service.csproj.CopyComplete
+C:\Users\iau\source\repos\University\University.Service\obj\Debug\University.Service.dll
+C:\Users\iau\source\repos\University\University.Service\obj\Debug\University.Service.pdb

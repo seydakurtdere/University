@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b2835f22b636464c8f73e4b939027f95" Name="Diagram1">
+        <EntityTypeShape EntityType="UniversityDBModel.Branch" Width="1.5" PointX="3.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Cours" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Faculty" Width="1.5" PointX="1.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.InstructorCours" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Instructor" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.RecordStatus" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.StudentCours" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Student" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.User" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="UniversityDBModel.FK_Branches_Faculties" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Courses_Branches" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Students_Branches" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_InstructorCourses_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_StudentCourses_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_InstructorCourses_Instructors" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Instructors_RecordStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Instructors_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Instructors_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Instructors_Users2" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Students_RecordStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_StudentCourses_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Students_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Students_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Students_Users2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
